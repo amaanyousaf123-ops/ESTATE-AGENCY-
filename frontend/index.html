@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander City Estate Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen glass-panel active">
+            <div class="login-box">
+                <h1>Commander City</h1>
+                <p class="subtitle">Estate Management System</p>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <p id="login-error" class="error-message"></p>
+                    <button type="submit" class="btn primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div id="dashboard-screen" class="screen">
+            <nav class="sidebar glass-panel">
+                <div class="logo">
+                    <h2>Commander City</h2>
+                </div>
+                <ul class="nav-links">
+                    <li data-target="view-dashboard" class="active">Dashboard</li>
+                    <li data-target="view-properties">Properties</li>
+                    <li data-target="view-rentals">Rentals</li>
+                    <li data-target="view-sales">Sales</li>
+                    <li data-target="view-maintenance">Maintenance</li>
+                </ul>
+                <div class="user-info">
+                    <span id="current-user">Admin</span>
+                    <button id="logout-btn" class="btn text">Logout</button>
+                </div>
+            </nav>
+
+            <main class="content-area">
+                <header class="top-bar">
+                    <h2 id="page-title">Dashboard</h2>
+                    <div class="actions">
+                        <button id="btn-add-property" class="btn primary glow">+ Add Property</button>
+                    </div>
+                </header>
+
+                <div class="views-container">
+                    <!-- Dashboard View -->
+                    <div id="view-dashboard" class="view active">
+                        <div class="stats-grid" id="dashboard-stats">
+                            <!-- Stats will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Properties View -->
+                    <div id="view-properties" class="view">
+                        <div class="table-container glass-panel">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Unit</th>
+                                        <th>Type</th>
+                                        <th>Size</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="properties-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Rentals View -->
+                    <div id="view-rentals" class="view">
+                        <div class="table-container glass-panel">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Unit</th>
+                                        <th>Tenant</th>
+                                        <th>Lease End</th>
+                                        <th>Rent</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rentals-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Sales View -->
+                    <div id="view-sales" class="view">
+                        <div class="table-container glass-panel">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Unit</th>
+                                        <th>Buyer</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sales-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Maintenance View -->
+                    <div id="view-maintenance" class="view">
+                        <div class="table-container glass-panel">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Unit</th>
+                                        <th>Issue</th>
+                                        <th>Reported By</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="maintenance-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal for adding property -->
+    <div id="modal-add-property" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Property</h2>
+            <form id="form-add-property">
+                <div class="input-group">
+                    <label>Block</label>
+                    <input type="text" id="prop-block" required>
+                </div>
+                <div class="input-group">
+                    <label>Unit Number</label>
+                    <input type="text" id="prop-unit" required>
+                </div>
+                <div class="input-group">
+                    <label>Type</label>
+                    <select id="prop-type">
+                        <option value="house">House</option>
+                        <option value="shop">Shop</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Size</label>
+                    <input type="text" id="prop-size" placeholder="e.g. 10 Marla" required>
+                </div>
+                <button type="submit" class="btn primary glow" style="margin-top:1rem; width:100%">Save Property</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
