@@ -1,0 +1,14 @@
+# SQLite databases (auto-generated)
+backend/data/*.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
